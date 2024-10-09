@@ -1,16 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://828bygkj8c4t"]
+[gd_scene load_steps=5 format=3 uid="uid://828bygkj8c4t"]
 
+[ext_resource type="Script" path="res://Assets/Buildings/House.gd" id="1_2vj00"]
 [ext_resource type="Texture2D" uid="uid://deoi3f8t2pxx5" path="res://Assets/Buildings/House.png" id="1_h6gnc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft6j6"]
 size = Vector2(110, 44)
 
-[node name="House" type="StaticBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e261q"]
+size = Vector2(29, 28)
+
+[node name="House" type="Node2D"]
+script = ExtResource("1_2vj00")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -23)
 texture = ExtResource("1_h6gnc")
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-2, 12)
 shape = SubResource("RectangleShape2D_ft6j6")
+metadata/_edit_lock_ = true
+
+[node name="Doorway" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doorway"]
+position = Vector2(35, 39)
+shape = SubResource("RectangleShape2D_e261q")
+
+[connection signal="body_entered" from="Doorway" to="." method="_on_doorway_body_entered"]
+[connection signal="body_exited" from="Doorway" to="." method="_on_doorway_body_exited"]

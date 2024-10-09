@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://c8f43vdj0jvgs"]
+
+[ext_resource type="Texture2D" uid="uid://cdhgp8lsj5541" path="res://Assets/Characters/OldGuy.png" id="1_pyxqy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_renln"]
+atlas = ExtResource("1_pyxqy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i151o"]
+atlas = ExtResource("1_pyxqy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0nhy"]
+atlas = ExtResource("1_pyxqy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va5fn"]
+atlas = ExtResource("1_pyxqy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80x5n"]
+atlas = ExtResource("1_pyxqy")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mh6v"]
+atlas = ExtResource("1_pyxqy")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeumm"]
+atlas = ExtResource("1_pyxqy")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eykjs"]
+atlas = ExtResource("1_pyxqy")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_toqcu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_renln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i151o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0nhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va5fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80x5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mh6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aeumm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eykjs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s16lt"]
+radius = 6.0
+height = 24.0
+
+[node name="WiseOldMan" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_toqcu")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.169777
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.42109e-14, 9)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_s16lt")

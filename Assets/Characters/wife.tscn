@@ -1,60 +1,89 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6td2ok2a0r8x"]
+[gd_scene load_steps=13 format=3 uid="uid://b6td2ok2a0r8x"]
 
 [ext_resource type="Texture2D" uid="uid://cpj3qhfeh0485" path="res://Assets/Characters/DyingWife.png" id="1_5vd4u"]
 
-[sub_resource type="Animation" id="Animation_bnd2w"]
-resource_name = "Idle"
-length = 0.9
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbsn0"]
+atlas = ExtResource("1_5vd4u")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="Animation" id="Animation_deunp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu8o6"]
+atlas = ExtResource("1_5vd4u")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxjpj"]
-_data = {
-"Idle": SubResource("Animation_bnd2w"),
-"RESET": SubResource("Animation_deunp")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_xurhy"]
+atlas = ExtResource("1_5vd4u")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydoir"]
+atlas = ExtResource("1_5vd4u")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mycoy"]
+atlas = ExtResource("1_5vd4u")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrgnm"]
+atlas = ExtResource("1_5vd4u")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngp5l"]
+atlas = ExtResource("1_5vd4u")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw42o"]
+atlas = ExtResource("1_5vd4u")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj5bx"]
+atlas = ExtResource("1_5vd4u")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xr21r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbsn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu8o6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xurhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydoir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mycoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrgnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngp5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw42o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj5bx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f13fq"]
 size = Vector2(33, 32)
 
 [node name="Wife" type="CharacterBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 9)
-texture = ExtResource("1_5vd4u")
-hframes = 9
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_lxjpj")
-}
-autoplay = "Idle"
+sprite_frames = SubResource("SpriteFrames_xr21r")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.635947
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 9)

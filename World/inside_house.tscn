@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cy8835oji73n5"]
+[gd_scene load_steps=11 format=3 uid="uid://cy8835oji73n5"]
 
 [ext_resource type="Texture2D" uid="uid://b4p6xovdu7ja7" path="res://Assets/Tilesets/InsideHouseTileSet.png" id="1_5ymc7"]
+[ext_resource type="Script" path="res://World/inside_house.gd" id="1_o3v3l"]
 [ext_resource type="Texture2D" uid="uid://puokwj1bcprf" path="res://Assets/Backgrounds/InsideHouseBackground.png" id="1_x1fyr"]
 [ext_resource type="PackedScene" uid="uid://con5vhgq7mvmj" path="res://Assets/Player/player.tscn" id="3_vpgyr"]
 [ext_resource type="PackedScene" uid="uid://b6td2ok2a0r8x" path="res://Assets/Characters/wife.tscn" id="4_4xlhw"]
+[ext_resource type="PackedScene" uid="uid://c8f43vdj0jvgs" path="res://Assets/Characters/wise_old_man.tscn" id="5_eyf7i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v1di1"]
 
@@ -543,8 +545,12 @@ terrain_set_0/terrain_0/name = "InsideHouse"
 terrain_set_0/terrain_0/color = Color(0.0936364, 0.301986, 0.89201, 1)
 sources/0 = SubResource("TileSetAtlasSource_jwnuj")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvfb5"]
+size = Vector2(47.5, 31)
+
 [node name="InsideHouse" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_o3v3l")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(482.5, 274)
@@ -564,3 +570,18 @@ position = Vector2(568, 334)
 [node name="Wife" parent="." instance=ExtResource("4_4xlhw")]
 z_index = 2
 position = Vector2(389, 180)
+
+[node name="WiseOldMan" parent="." instance=ExtResource("5_eyf7i")]
+z_index = 2
+position = Vector2(426, 188)
+
+[node name="Exit" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+z_index = 2
+position = Vector2(569, 334)
+shape = SubResource("RectangleShape2D_hvfb5")
+
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
+[connection signal="body_exited" from="Exit" to="." method="_on_exit_body_exited"]

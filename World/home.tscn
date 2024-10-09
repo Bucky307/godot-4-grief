@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://uhaghy3t8trb"]
+[gd_scene load_steps=16 format=3 uid="uid://uhaghy3t8trb"]
 
+[ext_resource type="Script" path="res://World/home.gd" id="1_mmle6"]
 [ext_resource type="Texture2D" uid="uid://c46uenxewsqji" path="res://Assets/Backgrounds/Grass.png" id="1_pkiv1"]
 [ext_resource type="Texture2D" uid="uid://cgjdvln6hbaf4" path="res://Assets/Tilesets/DirtPathTileSet.png" id="2_gb61x"]
 [ext_resource type="PackedScene" uid="uid://con5vhgq7mvmj" path="res://Assets/Player/player.tscn" id="3_eus1h"]
 [ext_resource type="PackedScene" uid="uid://828bygkj8c4t" path="res://Assets/Buildings/House.tscn" id="4_3mhk1"]
+[ext_resource type="PackedScene" uid="uid://cy8835oji73n5" path="res://World/inside_house.tscn" id="5_7j6c4"]
 [ext_resource type="PackedScene" uid="uid://pfoc5cqqw480" path="res://Assets/Foliage/bush.tscn" id="5_e6n0w"]
 [ext_resource type="PackedScene" uid="uid://b2i1qksflmpv6" path="res://Assets/Foliage/mushroom.tscn" id="6_iuij3"]
 [ext_resource type="PackedScene" uid="uid://b5y57cv3klxpo" path="res://Assets/Foliage/tree.tscn" id="7_cqn11"]
@@ -360,6 +362,7 @@ distance = -1.0
 
 [node name="Home" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_mmle6")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
@@ -380,6 +383,7 @@ position = Vector2(524, 332)
 
 [node name="House" parent="." instance=ExtResource("4_3mhk1")]
 position = Vector2(506, 267)
+inside_scene = ExtResource("5_7j6c4")
 
 [node name="Bushes" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -997,10 +1001,10 @@ position = Vector2(387, 45)
 position = Vector2(411, 39)
 
 [node name="Tree173" parent="Trees" instance=ExtResource("7_cqn11")]
-position = Vector2(435, 24)
+position = Vector2(431, 30)
 
 [node name="Tree174" parent="Trees" instance=ExtResource("7_cqn11")]
-position = Vector2(404, 19)
+position = Vector2(405, 27)
 
 [node name="Tree175" parent="Trees" instance=ExtResource("7_cqn11")]
 position = Vector2(378, 29)
